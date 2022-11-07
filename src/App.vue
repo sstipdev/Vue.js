@@ -1,8 +1,10 @@
 <template>
   <div class="black-bg" v-if="modals === true">
     <div class="white-bg">
-      <h4>상세페이지 입니다</h4>
-      <p>상세페이지 내용입니다.</p>
+      <img :src="rooms[check].image" class="modal-image" />
+      <h4>{{ rooms[check].title }}</h4>
+      <p>{{ rooms[check].content }}</p>
+      <p>{{ rooms[check].price }}</p>
       <button v-on:click="modals = false">닫기</button>
     </div>
   </div>
@@ -13,20 +15,17 @@
 
   <div v-for="data in rooms" :key="data.id">
     <img :src="data.image" class="room-img" />
-    <h4 v-on:click="modals = true">{{ data.title }}</h4>
+    <h4
+      v-on:click="
+        modals = true;
+        check = data.id;
+      "
+    >
+      {{ data.title }}
+    </h4>
     <p>{{ data.content }}</p>
     <p>{{ data.price }} 원</p>
   </div>
-  <!-- <div>
-    <img src="./assets/room1.jpg" class="room-img" />
-    <h4 v-on:click="modals = true">{{ products[1] }} 원룸</h4>
-    <p>60 만원</p>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img" />
-    <h4 v-on:click="modals = true">{{ products[2] }} 원룸</h4>
-    <p>70 만원</p>
-  </div> -->
 </template>
 
 <script>
@@ -36,6 +35,7 @@ export default {
   name: "App",
   data() {
     return {
+      check: 0,
       rooms: roomsData,
       modals: false,
       reports: [0, 0, 0],
@@ -102,6 +102,12 @@ div {
   max-width: 600px;
   margin-top: 40px;
 }
+
+.modal-image {
+  width: 100%;
+  max-width: 550px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
