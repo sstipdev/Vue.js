@@ -11,31 +11,32 @@
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
 
-  <div>
-    <img src="./assets/room0.jpg" class="room-img" />
-    <h4 v-on:click="modals = true">{{ products[0] }} 원룸</h4>
-    <p>50 만원</p>
-    <button v-on:click="reports[0] += 1">허위매물 신고</button> <span>신고수 : {{ reports[0] }}</span>
+  <div v-for="data in rooms" :key="data.id">
+    <img :src="data.image" class="room-img" />
+    <h4 v-on:click="modals = true">{{ data.title }}</h4>
+    <p>{{ data.content }}</p>
+    <p>{{ data.price }} 원</p>
   </div>
-  <div>
+  <!-- <div>
     <img src="./assets/room1.jpg" class="room-img" />
-    <h4>{{ products[1] }} 원룸</h4>
+    <h4 v-on:click="modals = true">{{ products[1] }} 원룸</h4>
     <p>60 만원</p>
-    <button v-on:click="reports[1] += 1">허위매물 신고</button> <span>신고수 : {{ reports[1] }}</span>
   </div>
   <div>
     <img src="./assets/room2.jpg" class="room-img" />
-    <h4>{{ products[2] }} 원룸</h4>
+    <h4 v-on:click="modals = true">{{ products[2] }} 원룸</h4>
     <p>70 만원</p>
-    <button v-on:click="reports[2] += 1">허위매물 신고</button> <span>신고수 : {{ reports[2] }}</span>
-  </div>
+  </div> -->
 </template>
 
 <script>
+import roomsData from "./data/post.js";
+
 export default {
   name: "App",
   data() {
     return {
+      rooms: roomsData,
       modals: false,
       reports: [0, 0, 0],
       menus: ["Home", "Shop", "About"],
@@ -82,9 +83,11 @@ div {
 
 .white-bg {
   width: 100%;
+  max-width: 650px;
   background: white;
   border-radius: 8px;
   padding: 20px;
+  margin: auto;
 }
 
 .white-bg button {
