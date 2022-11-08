@@ -4,8 +4,15 @@
       <img :src="rooms[check].image" class="modal-image" />
       <h4>{{ rooms[check].title }}</h4>
       <p>{{ rooms[check].content }}</p>
-      <p>{{ rooms[check].price }}</p>
-      <button v-on:click="$emit('showModal')">닫기</button>
+      <input v-model.number="month" />
+      <select v-model="month">
+        <option>2</option>
+        <option>5</option>
+        <option>8</option>
+        <option>12</option>
+      </select>
+      <p>{{ month }} 개월 {{ rooms[check].price * month }}</p>
+      <button @click="$emit('closeModal')">닫기</button>
     </div>
   </div>
 </template>
@@ -17,6 +24,11 @@ export default {
     rooms: Array,
     check: Number,
     modals: Boolean,
+  },
+  data() {
+    return {
+      month: 1,
+    };
   },
 };
 </script>

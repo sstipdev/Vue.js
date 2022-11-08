@@ -3,7 +3,7 @@
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
 
-  <Modal :rooms="rooms" :check="check" :modals="modals" @showModal="modals = false" />
+  <Modal :rooms="rooms" :check="check" :modals="modals" @closeModal="modals = false" />
 
   <Discount />
 
