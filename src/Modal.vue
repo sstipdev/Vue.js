@@ -5,8 +5,7 @@
       <h4>{{ rooms[check].title }}</h4>
       <p>{{ rooms[check].content }}</p>
       <p>{{ rooms[check].price }}</p>
-      <Discount />
-      <button v-on:click="modals = false">닫기</button>
+      <!-- <button v-on:click="modals = false">닫기</button> -->
     </div>
   </div>
 </template>
@@ -14,6 +13,11 @@
 <script>
 export default {
   name: "Modal",
+  props: {
+    rooms: Array,
+    check: Number,
+    modals: Boolean,
+  },
 };
 </script>
 

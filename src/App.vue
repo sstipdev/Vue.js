@@ -3,29 +3,18 @@
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
 
-  <Modal />
+  <Modal :rooms="rooms" :check="check" :modals="modals" />
 
   <Discount />
 
-  <div v-for="data in rooms" :key="data.id">
-    <img :src="data.image" class="room-img" />
-    <h4
-      v-on:click="
-        modals = true;
-        check = data.id;
-      "
-    >
-      {{ data.title }}
-    </h4>
-    <p>{{ data.content }}</p>
-    <p>{{ data.price }} 원</p>
-  </div>
+  <Card :rooms="rooms" />
 </template>
 
 <script>
 import roomsData from "./data/post.js";
 import Discount from "./Discount.vue";
 import Modal from "./Modal.vue";
+import Card from "./Card.vue";
 
 export default {
   name: "App",
@@ -49,6 +38,7 @@ export default {
   components: {
     Discount,
     Modal,
+    Card,
   },
 };
 </script>
