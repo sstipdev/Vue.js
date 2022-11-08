@@ -5,7 +5,7 @@
       <h4>{{ rooms[check].title }}</h4>
       <p>{{ rooms[check].content }}</p>
       <p>{{ rooms[check].price }}</p>
-      <!-- <button v-on:click="modals = false">닫기</button> -->
+      <button v-on:click="$emit('showModal')">닫기</button>
     </div>
   </div>
 </template>

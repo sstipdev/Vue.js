@@ -3,11 +3,19 @@
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
 
-  <Modal :rooms="rooms" :check="check" :modals="modals" />
+  <Modal :rooms="rooms" :check="check" :modals="modals" @showModal="modals = false" />
 
   <Discount />
 
-  <Card v-for="data in rooms" :key="data.id" :data="data" />
+  <Card
+    @showModal="
+      modals = true;
+      check = $event;
+    "
+    v-for="data in rooms"
+    :key="data.id"
+    :data="data"
+  />
 </template>
 
 <script>
