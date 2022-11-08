@@ -1,5 +1,5 @@
 <template>
-  <div v-for="data in rooms" :key="data.id">
+  <div>
     <img :src="data.image" class="room-img" />
     <h4 v-on:click="check = data.id">
       {{ data.title }}
@@ -13,7 +13,7 @@
 export default {
   name: "Card",
   props: {
-    rooms: Object,
+    data: Object,
   },
 };
 </script>

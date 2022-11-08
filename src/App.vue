@@ -7,7 +7,7 @@
 
   <Discount />
 
-  <Card :rooms="rooms" />
+  <Card v-for="data in rooms" :key="data.id" :data="data" />
 </template>
 
 <script>
