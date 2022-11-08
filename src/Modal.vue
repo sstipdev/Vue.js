@@ -30,6 +30,15 @@ export default {
       month: 1,
     };
   },
+  watch: {
+    month(a) {
+      const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+      // 한글, 영문 체크
+      if (reg.exec(a) !== null) {
+        this.month = a.replace(/[^0-9]/g, 1);
+      }
+    },
+  },
 };
 </script>
 
