@@ -30,6 +30,7 @@ export default {
       month: 1,
     };
   },
+  // watch는 데이터를 감시함.
   watch: {
     month(a) {
       const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
