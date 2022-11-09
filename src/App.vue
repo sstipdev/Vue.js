@@ -7,7 +7,7 @@
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
 
-  <Discount />
+  <Discount v-if="showCount === true" :count="count" />
 
   <button @click="priceLowSort">가격 낮은순</button>
   <button @click="priceHighSort">가격 높은순</button>
@@ -34,6 +34,8 @@ export default {
   name: "App",
   data() {
     return {
+      count: 30,
+      showCount: true,
       roomsBase: [...roomsData],
       check: 0,
       rooms: roomsData,
@@ -57,6 +59,15 @@ export default {
     priceHighSort() {
       this.rooms.sort((a, b) => b.price - a.price);
     },
+  },
+
+  mounted() {
+    setInterval(() => {
+      if (this.count !== 0) {
+        return (this.count -= 1);
+      }
+      return (this.showCount = false);
+    }, 1000);
   },
 
   components: {

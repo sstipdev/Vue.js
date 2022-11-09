@@ -39,6 +39,13 @@ export default {
       }
     },
   },
+
+  beforeUpdate() {
+    if (this.month === 2) {
+      alert("우리는 2개월치 안함 ㅋ");
+      this.month = 1;
+    }
+  },
 };
 </script>
 
