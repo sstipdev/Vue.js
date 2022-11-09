@@ -33,10 +33,9 @@ export default {
   // watch는 데이터를 감시함.
   watch: {
     month(a) {
-      const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
-      // 한글, 영문 체크
-      if (reg.exec(a) !== null) {
-        this.month = a.replace(/[^0-9]/g, 1);
+      if (isNaN(a) === true) {
+        alert("문자입력은 금지입니다.");
+        this.month = 1;
       }
     },
   },

@@ -1,9 +1,11 @@
 <template>
+  <transition name="fade">
+    <Modal :rooms="rooms" :check="check" :modals="modals" @closeModal="modals = false" />
+  </transition>
+
   <div class="menu">
     <a v-for="(data, i) in menus" :key="i">{{ data }}</a>
   </div>
-
-  <Modal :rooms="rooms" :check="check" :modals="modals" @closeModal="modals = false" />
 
   <Discount />
 
@@ -52,6 +54,26 @@ export default {
 </script>
 
 <style>
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-from {
+  transform: translateY(-1000px);
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
 }
