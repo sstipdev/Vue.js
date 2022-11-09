@@ -9,6 +9,10 @@
 
   <Discount />
 
+  <button @click="priceLowSort">가격 낮은순</button>
+  <button @click="priceHighSort">가격 높은순</button>
+  <button @click="sortBack">되돌리기</button>
+
   <Card
     @showModal="
       modals = true;
@@ -30,6 +34,7 @@ export default {
   name: "App",
   data() {
     return {
+      roomsBase: [...roomsData],
       check: 0,
       rooms: roomsData,
       modals: false,
@@ -42,6 +47,15 @@ export default {
   methods: {
     addReports() {
       this.reports += 1;
+    },
+    sortBack() {
+      this.rooms = [...this.roomsBase];
+    },
+    priceLowSort() {
+      this.rooms.sort((a, b) => a.price - b.price);
+    },
+    priceHighSort() {
+      this.rooms.sort((a, b) => b.price - a.price);
     },
   },
 
